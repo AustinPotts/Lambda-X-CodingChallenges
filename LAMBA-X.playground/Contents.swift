@@ -1,4 +1,4 @@
-import UIKit
+
 // MARK: - Day 1 of LAMBDA-X
 
 //MARK: - (EASY) Create a function that takes a number as an argument, increments the number by +1 and returns the result.
@@ -113,36 +113,249 @@ import UIKit
               // create storages for strings + Ints
               //return string storage
 
+//
+//func stringsOnly(_ values: [Any])-> [Int] {
+//
+//    var stringStorage: [String] = []
+//    var intStorage: [Int] = []
+//    let values = values
+//
+//
+//    for obj in values {
+//        if let string = obj as? String {
+//            stringStorage.append(string as! String)
+//        } else if let int = obj as? Int {
+//            intStorage.append(int as! Int)
+//        }
+//    }
+//
+//    return intStorage
+//
+//// MISTAKES: My initial approach was correct, but I got confused as to how to iterate over an any object array, I found out you can check by downcasting the objects as types
+//// First Try:::::
+////    for n in values as! [[String: AnyObject]] {
+////        if n == String {
+////            stringStorage.append(n as! String)
+////        } else if n == Int {
+////
+////        }
+////    }
+//}
+//
+//stringsOnly([1,2,"no"])
+//stringsOnly([4,5,6,"hello", "bye",1])
 
-func stringsOnly(_ values: [Any])-> [Int] {
-    
-    var stringStorage: [String] = []
-    var intStorage: [Int] = []
-    let values = values
-    
-    
-    for obj in values {
-        if let string = obj as? String {
-            stringStorage.append(string as! String)
-        } else if let int = obj as? Int {
-            intStorage.append(int as! Int)
-        }
-    }
-    
-    return intStorage
-    
-// MISTAKES: My initial approach was correct, but I got confused as to how to iterate over an any object array, I found out you can check by downcasting the objects as types
-// First Try:::::
-//    for n in values as! [[String: AnyObject]] {
-//        if n == String {
-//            stringStorage.append(n as! String)
-//        } else if n == Int {
+
+
+//MARK: - (HARD) Create a function that takes an array of numbers and return the number that's unique.
+// ex: unique([3, 3, 3, 7, 3, 3]) ➞ 7
+
+// I need a function that takes in an int array & returns int
+
+// Iterate through input values of array
+   // create unique holder value
+   // create nonUnique storage
+   // while iterating make the first number = value
+   // check if numbers are equal to value
+
+//func findUniqueValue(_ values: [Int]) -> [Int] {
+//
+//    let values = values
+//    var unique: [Int] = []
+//    var nonUnique: [Int] = []
+//    let x = values[0]
+//
+//    for n in values {
+//        if n == x {
+//            nonUnique.append(n)
+//        } else if n != x {
+//             unique.append(n)
+//        }
+//    }
+//
+//    print(unique)
+//    return unique
+//}
+//
+//findUniqueValue([1,1,1,1,2])
+
+
+
+
+// MARK: - Day 3 of LAMBDA-X
+
+//MARK: - (EASY) Given an array of boxes, create a function that returns the total volume of all those boxes combined together. A box is represented by an array with three elements: length, width and height.
+// For instance, totalVolume([2, 3, 2], [6, 6, 7], [1, 2, 1]) should return 266 since (2 x 3 x 2) + (6 x 6 x 7) + (1 x 2 x 1) = 12 + 252 + 2 = 266.
+
+   // Need to create a function that atkes in three arrays
+   // Need to multiply each value in array & return int
+//
+//func boxed(_ array1: [Int], _ array2: [Int], _ array3: [Int]) -> Int {
+//
+//   var boxes = [array1, array2, array3]
+//
+//    var total = 0
+//
+//    for box in boxes {
+//        let i = boxes[0]
+//        let j = boxes[1]
+//        let k = boxes[2]
+//        let values = i * j * k
+//        total += values
+//        print(total)
+//        return values
+//    }
+//
+//    for box in array2 {
+//           let i = array2[0]
+//           let j = array2[1]
+//           let k = array2[2]
+//           let values = i * j * k
+//           total += values
+//           print(total)
+//           return values
+//       }
+//
+//
+//
+//
+////    for a in array1 {
+////        a * array1[0]
+////        print(a)
+////    }
+////
+////    for b in array2 {
+////        let values = array2.map{$0 * $0}
+////        print(values)
+////    }
+////
+////    for c in array3 {
+////
+////        print(array3[0] * array3[1])
+////    }
+//
+//   return 1
+//
+//}
+//
+//boxed([2,2,2], [3,2,2], [5,4,5])
+
+
+
+
+//MARK: - (Medium) ATM machines allow 4 or 6 digit PIN codes and PIN codes cannot contain anything but exactly 4 digits or exactly 6 digits. Your task is to create a function that takes a string and returns true if the PIN is valid and false if it's not.
+//ex: validatePIN("12345") ➞ false
+//ex: validatePIN("1234") ➞ true
+
+// Create a function that takes in a String & returns True
+//func atmCode(_ code: String) -> Bool {
+//
+//    // Check if characters are greater than or equal to 4/6
+//    // if String is longer than 4-6 return false
+//    // if String contains letter return false
+//    // else return true
+//
+//    var isRight: Bool = false
+//
+//    for _ in code {
+//
+//        if let _ = Int(code) {
+//            isRight = true
+//
+//        } else {
+//            isRight = false
 //
 //        }
 //    }
+//
+//    if code.count > 6 {
+//     isRight = false
+//
+//    } else if code.count < 4 {
+//     isRight = false
+//
+//    }
+//
+//    return isRight
+//}
+//
+//atmCode("1234")
+
+
+
+//MARK: - (HARD) Create a function that takes an array of card numbers and checks if the sum of their value exceeds 21. If the sum exceeds 21, return true and if the sum is under or equal to 21, return false. Values of the cards are as follows:
+// MARK: - COMPLETED IN 30 Minutes
+//J-K (face cards) count as 10.
+// Aces count either as 1 or 11 - play conservatively, so that if giving an ace a value of 11 causes you to lose and 1 allows you to win, then go with 1.
+//ex: overTwentyOne([2, 8, "J"]) ➞ false
+//ex: overTwentyOne([5, 5, 3, 9]) ➞ true
+
+// I need to create a function that takes in an array of card values which can be anyobject
+// Return True if over 21, return false if under 21
+
+// You need to turn J-K into Int values of 10
+func overTwentyOne(_ cards: [Any]) -> Bool {
+    
+   var isOver: Bool = true
+   var intStorage: [Int] = []
+   var stringStorage: [String] = []
+    
+    // I need to iterate over the cards
+       // if Int add to Int storage
+       // if String add to String Storage
+         // Combine both Storages
+           // If storage > 21 return isOver:Bool = true
+    for obj in cards {
+        if let int = obj as? Int {
+            intStorage.append(int)
+        } else if let string = obj as? String {
+            stringStorage.append(string)
+        }
+    }
+    
+    for j in stringStorage {
+        if j == "J" {
+            intStorage.append(10)
+        }
+    }
+    
+    for k in stringStorage {
+        if k == "K" {
+            intStorage.append(10)
+        }
+    }
+    
+    var total = 0
+    for t in intStorage {
+           total += t
+       }
+    
+    for a in stringStorage {
+        if a == "A" {
+            if total >= 11 {
+               total += 1
+            } else if total <= 10 {
+                total += 11
+            }
+        }
+    }
+    
+   
+    if total == 21 {
+        isOver = false
+        print("You won!")
+    }
+    else if total > 21 {
+        print("You lost!")
+        isOver = true
+    } else if total < 21 {
+        print("Hit or Stay?")
+        isOver = false
+    }
+    return isOver
 }
 
-stringsOnly([1,2,"no"])
-stringsOnly([4,5,6,"hello", "bye",1])
-
+overTwentyOne([5, 5, 2, "K"]) //22
+overTwentyOne([5, 4, 1, "A"]) // 21
+overTwentyOne([5, 4, 2, "A"]) // Hit or Stay
 

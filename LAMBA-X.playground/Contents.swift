@@ -294,68 +294,136 @@
 // Return True if over 21, return false if under 21
 
 // You need to turn J-K into Int values of 10
-func overTwentyOne(_ cards: [Any]) -> Bool {
+//func overTwentyOne(_ cards: [Any]) -> Bool {
+//
+//   var isOver: Bool = true
+//   var intStorage: [Int] = []
+//   var stringStorage: [String] = []
+//
+//    // I need to iterate over the cards
+//       // if Int add to Int storage
+//       // if String add to String Storage
+//         // Combine both Storages
+//           // If storage > 21 return isOver:Bool = true
+//    for obj in cards {
+//        if let int = obj as? Int {
+//            intStorage.append(int)
+//        } else if let string = obj as? String {
+//            stringStorage.append(string)
+//        }
+//    }
+//
+//    for j in stringStorage {
+//        if j == "J" {
+//            intStorage.append(10)
+//        }
+//    }
+//
+//    for k in stringStorage {
+//        if k == "K" {
+//            intStorage.append(10)
+//        }
+//    }
+//
+//    var total = 0
+//    for t in intStorage {
+//           total += t
+//       }
+//
+//    for a in stringStorage {
+//        if a == "A" {
+//            if total >= 11 {
+//               total += 1
+//            } else if total <= 10 {
+//                total += 11
+//            }
+//        }
+//    }
+//
+//
+//    if total == 21 {
+//        isOver = false
+//        print("You won!")
+//    }
+//    else if total > 21 {
+//        print("You lost!")
+//        isOver = true
+//    } else if total < 21 {
+//        print("Hit or Stay?")
+//        isOver = false
+//    }
+//    return isOver
+//}
+//
+//overTwentyOne([5, 5, 2, "K"]) //22
+//overTwentyOne([5, 4, 1, "A"]) // 21
+//overTwentyOne([5, 4, 2, "A"]) // Hit or Stay
+
+
+// MARK: - Day 4 of LAMBDA-X
+
+//MARK: - (EASY) Create a function that takes an array of strings and return an array, sorted from shortest to longest.
+
+//func sortShortest(_ strings: [String]) -> [String] {
+//
+//    // Using higher order function .sorted to check if current index.count < next.count
+//    let descendingStrings = strings.sorted { $0.count < $1.count }
+//
+//    print(descendingStrings)
+//    return descendingStrings
+//}
+//
+//sortShortest(["Apple", "Tree", "Sixteen"])
+//sortShortest(["1234", "123", "12345"])
+
+
+//MARK: - (MEDIUM) Given a number, n, return a function which adds n to the number passed to it.
+//ex: add(10)(20) ➞ 30
+//ex: add(-30)(80) ➞ 50
+
+//func add(_ intOne: Int, _ intTwo: Int) -> Int {
+//    print(intOne + intTwo)
+//    return intOne + intTwo
+//}
+//
+//add(10, 20)
+//add(-30, 80)
+
+
+//MARK: - (HARD) Write a function that returns the number of sock pairs he has. A sock pair consists of two of the same letter, such as "AA". The socks are represented as an unordered sequence.
+//ex: sockPairs("AA") ➞ 1
+//ex: sockPairs("ABABC") ➞ 2
+
+// I need to create a function that takes in a string of letters & returns int
+
+// iterate over string, if letter == letter then value + 1
+
+func findSockPairs(_ socks: String) -> Int {
     
-   var isOver: Bool = true
-   var intStorage: [Int] = []
-   var stringStorage: [String] = []
+    var countedSet = Dictionary<Character, Int>()
+    var matchingPairs = Int()
+    var totalPairs = 0
     
-    // I need to iterate over the cards
-       // if Int add to Int storage
-       // if String add to String Storage
-         // Combine both Storages
-           // If storage > 21 return isOver:Bool = true
-    for obj in cards {
-        if let int = obj as? Int {
-            intStorage.append(int)
-        } else if let string = obj as? String {
-            stringStorage.append(string)
-        }
-    }
+         // Iterate over socks
+         for sock in socks {
+            // In iteration add sock to countedSet
+             countedSet[sock, default: 0] += 1
+            print(countedSet)
+         }
     
-    for j in stringStorage {
-        if j == "J" {
-            intStorage.append(10)
-        }
-    }
+         for key in countedSet.keys { // Iterate over counted Set Keys
+            //unwrap the count of socks because dictionary values are always optional.
+             if let sockCount = countedSet[key] { // sockCount = current key in counted set
+                 matchingPairs = Int(sockCount / 2) // Divide Sock Count by 2
+                 if matchingPairs % 1 == 0 { // If equals 0, add to total Pairs
+                     totalPairs += matchingPairs
+                 }
+             }
+         }
+         return totalPairs
     
-    for k in stringStorage {
-        if k == "K" {
-            intStorage.append(10)
-        }
-    }
-    
-    var total = 0
-    for t in intStorage {
-           total += t
-       }
-    
-    for a in stringStorage {
-        if a == "A" {
-            if total >= 11 {
-               total += 1
-            } else if total <= 10 {
-                total += 11
-            }
-        }
-    }
-    
-   
-    if total == 21 {
-        isOver = false
-        print("You won!")
-    }
-    else if total > 21 {
-        print("You lost!")
-        isOver = true
-    } else if total < 21 {
-        print("Hit or Stay?")
-        isOver = false
-    }
-    return isOver
 }
 
-overTwentyOne([5, 5, 2, "K"]) //22
-overTwentyOne([5, 4, 1, "A"]) // 21
-overTwentyOne([5, 4, 2, "A"]) // Hit or Stay
+findSockPairs("AABB")
+
 

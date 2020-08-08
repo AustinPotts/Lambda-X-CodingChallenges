@@ -398,32 +398,129 @@
 
 // iterate over string, if letter == letter then value + 1
 
-func findSockPairs(_ socks: String) -> Int {
+//func findSockPairs(_ socks: String) -> Int {
+//
+//    var countedSet = Dictionary<Character, Int>()
+//    var matchingPairs = Int()
+//    var totalPairs = 0
+//
+//         // Iterate over socks
+//         for sock in socks {
+//            // In iteration add sock to countedSet
+//             countedSet[sock, default: 0] += 1
+//            print(countedSet)
+//         }
+//
+//         for key in countedSet.keys { // Iterate over counted Set Keys
+//            //unwrap the count of socks because dictionary values are always optional.
+//             if let sockCount = countedSet[key] { // sockCount = current key in counted set
+//                 matchingPairs = Int(sockCount / 2) // Divide Sock Count by 2
+//                 if matchingPairs % 1 == 0 { // If equals 0, add to total Pairs
+//                     totalPairs += matchingPairs
+//                 }
+//             }
+//         }
+//         return totalPairs
+//
+//}
+//
+//findSockPairs("AABB")
+
+// MARK: - Day 5 of LAMBDA-X
+
+//MARK: - (EASY) Create a function which takes in a word and spells it out, by consecutively adding letters until the full word is completed.
+//ex: spelling("bee") ➞ ["b", "be", "bee"]
+
+//func spelling(_ word: String) -> [String] {
+//
+//    var words: [String] = []
+//    var s = ""
+//
+//
+//    for char in word {
+//        s+=String(char)
+//        words.append(s)
+//    }
+//
+//    print(words)
+//    return words
+//}
+//
+//spelling("bee")
+//
+//extension String {
+//    subscript(i: Int) -> String {
+//        return String(self[index(startIndex, offsetBy: i)])
+//    }
+//}
+
+
+//MARK: - (MEDIUM) Create a function that takes an array of integers and removes the smallest value.
+// A museum wants to get rid of some exhibitions. Katya, the interior architect, comes up with a plan to remove the most boring exhibitions. She gives them a rating, and removes the one with the lowest rating. Just as she finishes rating the exhibitions, she's called off to an important meeting. She asks you to write a program that tells her the ratings of the items after the lowest one is removed.
+
+//ex: removeSmallest([1, 2, 3, 4, 5] ) ➞ [2, 3, 4, 5]
+//ex: removeSmallest([2, 2, 1, 2, 1]) ➞ [2, 2, 2, 1]
+
+func removeSmallest(_ array: [Int])-> [Int] {
     
-    var countedSet = Dictionary<Character, Int>()
-    var matchingPairs = Int()
-    var totalPairs = 0
+    // Iterate over the array, find the smallest number
+    // Once smallest number found, remove
+    // Use max()? or sorted?
     
-         // Iterate over socks
-         for sock in socks {
-            // In iteration add sock to countedSet
-             countedSet[sock, default: 0] += 1
-            print(countedSet)
-         }
+   //MARK: - This code works, but its not optimal
+//    var storage: [Int] = []
+//
+//    for n in array {
+//        storage.append(n)
+//    }
+//
+//    let sorted = storage.sorted(by: >)
+//
+//    print(sorted.dropLast())
+//    return sorted.dropLast()
     
-         for key in countedSet.keys { // Iterate over counted Set Keys
-            //unwrap the count of socks because dictionary values are always optional.
-             if let sockCount = countedSet[key] { // sockCount = current key in counted set
-                 matchingPairs = Int(sockCount / 2) // Divide Sock Count by 2
-                 if matchingPairs % 1 == 0 { // If equals 0, add to total Pairs
-                     totalPairs += matchingPairs
-                 }
-             }
-         }
-         return totalPairs
+    //MARK: - Improved - O(n log (n)), where n is the length of the sequence.
+    let sorted = array.sorted(by: >)
+    
+    //O(n)
+    return sorted.dropLast()
+    //O(n) + O(n log(n)) = O(n log(n))
+    // For Big O complexity, all you care about is the dominant term.  n log(n) dominates n so that's the only term that you care about.
     
 }
 
-findSockPairs("AABB")
+removeSmallest([6,2,2,3,1,4,5])
+removeSmallest([2, 2, 1, 2, 1])
 
 
+//MARK: - (HARD) Create a function that takes a string and replaces every letter with the letter following it in the alphabet ("c" becomes "d", "z" becomes "a", "b" becomes "c", etc). Then capitalize every vowel (a, e, i, o, u) and return the new modified string.
+//ex: mangle("Fun times!") ➞ "GvO Ujnft!"
+//ex: mangle("The quick brown fox.") ➞ "UIf rvjdl cspxO gpy."
+
+func mangle(_ word: String)-> String {
+    
+
+    var s = " "
+    for i in word.shuffled() {
+        if i == "a" {
+            s+=String(i.uppercased())
+        } else if i == "e" {
+            s+=String(i.uppercased())
+        } else if i == "i" {
+            s+=String(i.uppercased())
+        } else if i == "o" {
+            s+=String(i.uppercased())
+        } else if i == "u" {
+            s+=String(i.uppercased())
+        } else {
+            s+=String(i)
+        }
+    }
+    
+
+    
+    print(s)
+    return s
+}
+
+mangle("Fun times!")

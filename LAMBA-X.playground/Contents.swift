@@ -461,66 +461,205 @@
 //ex: removeSmallest([1, 2, 3, 4, 5] ) ➞ [2, 3, 4, 5]
 //ex: removeSmallest([2, 2, 1, 2, 1]) ➞ [2, 2, 2, 1]
 
-func removeSmallest(_ array: [Int])-> [Int] {
-    
-    // Iterate over the array, find the smallest number
-    // Once smallest number found, remove
-    // Use max()? or sorted?
-    
-   //MARK: - This code works, but its not optimal
-//    var storage: [Int] = []
+//func removeSmallest(_ array: [Int])-> [Int] {
 //
-//    for n in array {
-//        storage.append(n)
-//    }
+//    // Iterate over the array, find the smallest number
+//    // Once smallest number found, remove
+//    // Use max()? or sorted?
 //
-//    let sorted = storage.sorted(by: >)
+//   //MARK: - This code works, but its not optimal
+////    var storage: [Int] = []
+////
+////    for n in array {
+////        storage.append(n)
+////    }
+////
+////    let sorted = storage.sorted(by: >)
+////
+////    print(sorted.dropLast())
+////    return sorted.dropLast()
 //
-//    print(sorted.dropLast())
+//    //MARK: - Improved - O(n log (n)), where n is the length of the sequence.
+//    let sorted = array.sorted(by: >)
+//
+//    //O(n)
 //    return sorted.dropLast()
-    
-    //MARK: - Improved - O(n log (n)), where n is the length of the sequence.
-    let sorted = array.sorted(by: >)
-    
-    //O(n)
-    return sorted.dropLast()
-    //O(n) + O(n log(n)) = O(n log(n))
-    // For Big O complexity, all you care about is the dominant term.  n log(n) dominates n so that's the only term that you care about.
-    
-}
-
-removeSmallest([6,2,2,3,1,4,5])
-removeSmallest([2, 2, 1, 2, 1])
+//    //O(n) + O(n log(n)) = O(n log(n))
+//    // For Big O complexity, all you care about is the dominant term.  n log(n) dominates n so that's the only term that you care about.
+//
+//}
+//
+//removeSmallest([6,2,2,3,1,4,5])
+//removeSmallest([2, 2, 1, 2, 1])
 
 
 //MARK: - (HARD) Create a function that takes a string and replaces every letter with the letter following it in the alphabet ("c" becomes "d", "z" becomes "a", "b" becomes "c", etc). Then capitalize every vowel (a, e, i, o, u) and return the new modified string.
 //ex: mangle("Fun times!") ➞ "GvO Ujnft!"
 //ex: mangle("The quick brown fox.") ➞ "UIf rvjdl cspxO gpy."
+//func mangle(_ word: String)-> String {
+//
+//
+//    var s = " "
+//    for i in word.shuffled() {
+//        if i == "a" {
+//            s+=String(i.uppercased())
+//        } else if i == "e" {
+//            s+=String(i.uppercased())
+//        } else if i == "i" {
+//            s+=String(i.uppercased())
+//        } else if i == "o" {
+//            s+=String(i.uppercased())
+//        } else if i == "u" {
+//            s+=String(i.uppercased())
+//        } else {
+//            s+=String(i)
+//        }
+//    }
+//
+//
+//
+//    print(s)
+//    return s
+//}
+//
+//mangle("Fun times!")
 
-func mangle(_ word: String)-> String {
+//MARK: - (MEDIUM) Create a function that counts the number of times a particular letter shows up in the word search.
+
+//ex: letterCounter([
+//  ["D", "E", "Y", "H", "A", "D"],
+//  ["C", "B", "Z", "Y", "J", "K"],
+//  ["D", "B", "C", "A", "M", "N"],
+//  ["F", "G", "G", "R", "S", "R"],
+//  ["V", "X", "H", "A", "S", "S"]
+//], "D") ➞ 3
+
+// I need to iterate over array of letters
+
+//func letterCounter(_ wordArray: [String]) -> [Int] {
+//
+//    // Create a Dictionary to manage specific letters
+//    var countedSet = Dictionary<String, Int>()
+//
+//    //While i iterate through the word array
+//
+//    for char in wordArray {
+//         countedSet[char, default: 0] += 1
+//    }
+//
+//    var storage: [Int] = []
+//
+//    for key in countedSet.keys { // Iterate over counted Set Keys
+//        //unwrap the count of socks because dictionary values are always optional.
+//        if var keyCount = countedSet[key] { //current key in counted set
+//           // print(keyCount)
+//            storage.append(keyCount)
+//        }
+//    }
+//
+//    let n = storage.sorted()
+//
+//    print(n.dropFirst(11))
+//    return n
+//
+//}
+//
+//
+//letterCounter(["D", "E", "Y", "H", "A", "D" ,"C", "B", "Z", "Y", "J", "K", "D", "B", "C", "A", "M", "N"])
+
+
+// MARK: - Day 6 of LAMBDA-X
+
+//MARK: - (EASY) Create a function that repeats each character in a string n times.
+//ex: repeating("mice", 5) ➞ "mmmmmiiiiiccccceeeee"
+//ex: repeating("stop", 1) ➞ "stop"
+//
+//func repeating(_ string: String, _ n: Int)-> String {
+//
+//    var newString: String = ""
+//
+//    for i in string {
+//    let mult = String(repeating: i as Character, count: n)
+//        newString.append(mult)
+//    }
+//
+//    print(newString)
+//    return newString
+//
+//}
+//
+//repeating("mice", 5)
+//repeating("stop", 1)
+
+
+//MARK: (MEDIUM) Andy, Ben and Charlotte are playing a board game. The three of them decided to come up with a new scoring system. A player's first initial ("A", "B" or "C") denotes that player scoring a single point. Given a string of capital letters, return an array of the players' scores.
+//ex: calculateScores("A") ➞ [1, 0, 0]
+//ex: calculateScores("ABCBACC") ➞ [2, 2, 3]
+
+//
+//func calScore(_ letters: String) -> [Int] {
+//
+//    // Create dictionary to store values with key A:1, A:2 etc.
+//    var dict = Dictionary<Character, Int>()
+//
+//    // Create array to store total
+//    var intArray: [Int] = []
+//
+//    // iterate over the characters
+//    for char in letters {
+//        // Add key with value
+//         dict[char, default: 0] += 1
+//         //print(dict)
+//    }
+//
+//    for key in dict.keys {
+//        if let count = dict[key] {
+//            intArray.append(count)
+//            //print(count)
+//        }
+//    }
+//    //print(intArray.sorted(by: >))
+//
+//    return intArray
+//}
+//
+//calScore("ABCBACC")
+
+
+//MARK: (HARD) A boomerang is a V-shaped sequence that is either upright or upside down. Specifically, a boomerang can be defined as: sub-array of length 3, with the first and last digits being the same and the middle digit being different. Create a function that returns the total number of boomerangs in an array.
+
+// ex: countBoomerangs([9, 5, 9, 5, 1, 1, 1]) ➞ 2
+
+
+func countBoomerangs(_ arrayInt: [Int]) -> Int {
     
+    // I'll want to establish "rules"?
 
-    var s = " "
-    for i in word.shuffled() {
-        if i == "a" {
-            s+=String(i.uppercased())
-        } else if i == "e" {
-            s+=String(i.uppercased())
-        } else if i == "i" {
-            s+=String(i.uppercased())
-        } else if i == "o" {
-            s+=String(i.uppercased())
-        } else if i == "u" {
-            s+=String(i.uppercased())
-        } else {
-            s+=String(i)
-        }
+    // Iterate over array, check if first index is == next.next index
+    
+    var totalRangs = 0
+    
+   // for (index,element) in arrayInt.enumerated() {
+       // print(index, element)
+   // }
+    
+    for i in 0..<arrayInt.count - 2 {
+      
+            let elem = arrayInt[i]
+            let elem2 = arrayInt[i + 1]
+            let elem3  = arrayInt[i + 2]
+            
+        
+            if elem == elem3 && elem2 != elem {
+                totalRangs += 1
+                print(totalRangs)
+            }
+
+        // print("Current: \(elem), Middle: \(elem2) NextThird: \(elem3)")
     }
     
-
-    
-    print(s)
-    return s
+    return totalRangs
 }
 
-mangle("Fun times!")
+countBoomerangs([9, 5, 9, 5, 1, 1, 1])
+//countBoomerangs([5, 6, 6, 7, 6, 3, 9])

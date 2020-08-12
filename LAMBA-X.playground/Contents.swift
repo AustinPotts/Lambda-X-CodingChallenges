@@ -627,39 +627,110 @@
 
 
 //MARK: (HARD) A boomerang is a V-shaped sequence that is either upright or upside down. Specifically, a boomerang can be defined as: sub-array of length 3, with the first and last digits being the same and the middle digit being different. Create a function that returns the total number of boomerangs in an array.
-
 // ex: countBoomerangs([9, 5, 9, 5, 1, 1, 1]) ➞ 2
 
+//
+//func countBoomerangs(_ arrayInt: [Int]) -> Int {
+//
+//    // Iterate over array, check if first index is == next.next index
+//    var totalRangs = 0
+//
+//
+//    for i in 0..<arrayInt.count - 2 {
+//
+//            let elem = arrayInt[i]
+//            let elem2 = arrayInt[i + 1]
+//            let elem3  = arrayInt[i + 2]
+//
+//
+//            if elem == elem3 && elem2 != elem {
+//                totalRangs += 1
+//                print(totalRangs)
+//            }
+//
+//        // print("Current: \(elem), Middle: \(elem2) NextThird: \(elem3)")
+//    }
+//
+//    return totalRangs
+//}
+//
+//countBoomerangs([9, 5, 9, 5, 1, 1, 1])
+//countBoomerangs([5, 6, 6, 7, 6, 3, 9])
 
-func countBoomerangs(_ arrayInt: [Int]) -> Int {
-    
-    // I'll want to establish "rules"?
 
-    // Iterate over array, check if first index is == next.next index
-    
-    var totalRangs = 0
-    
-   // for (index,element) in arrayInt.enumerated() {
-       // print(index, element)
-   // }
-    
-    for i in 0..<arrayInt.count - 2 {
-      
-            let elem = arrayInt[i]
-            let elem2 = arrayInt[i + 1]
-            let elem3  = arrayInt[i + 2]
-            
-        
-            if elem == elem3 && elem2 != elem {
-                totalRangs += 1
-                print(totalRangs)
-            }
+// MARK: - Day 7 of LAMBDA-X
 
-        // print("Current: \(elem), Middle: \(elem2) NextThird: \(elem3)")
+//MARK: - (EASY) Create a function that takes a number as an argument and returns true or false depending on whether the number is symmetrical or not. A number is symmetrical when it is the same as its reverse.
+//ex: isSymmetrical(7227) ➞ true
+//ex: isSymmetrical(9939) ➞ false
+
+func isSym(_ number: Int) -> Bool {
+    
+    let string = String(number)
+    var rev: String = ""
+    
+    for char in string.reversed() {
+        rev.append(char)
     }
     
-    return totalRangs
+    if string == rev {
+        return true
+    } else {
+        return false
+    }
+    
 }
 
-countBoomerangs([9, 5, 9, 5, 1, 1, 1])
-//countBoomerangs([5, 6, 6, 7, 6, 3, 9])
+isSym(7227)
+isSym(9939)
+
+
+//MARK: - (MEDIUM) Create a function that takes a string as an argument and converts the first character of each word to uppercase. Return the newly formatted string.
+//ex: makeTitle("This is a title") ➞ "This Is A Title"
+
+//MARK: FIX
+//func uppercase(_ string: String) -> String {
+//
+//
+//    var split = string.split(separator: " ")
+//
+//    var holder: String = ""
+//
+//    let map = split.map{ $0.uppercased() }
+//
+//    for word in map {
+//        holder.append("\(word) ")
+//    }
+//
+//    print(holder)
+//
+//    return holder
+//}
+//
+//uppercase("This is a title")
+
+//MARK: (HARD) Create a function that takes a string of words and return a string sorted alphabetically by the last character of each word.
+//ex: sortByLast("herb camera dynamic") ➞ "camera herb dynamic"
+//ex: sortByLast("stab traction artist approach") ➞ "stab approach traction artist"
+
+func sortByLast(_ string: String) -> String {
+    
+    var order: String = ""
+    
+    let split = string.split(separator: " ")
+    for word in split {
+        if word.last == "k" {
+            order.append(contentsOf: word)
+        }
+    }
+    
+    //split.sorted(by: sortByLast(<#T##string: String##String#>))
+    
+    // iterate through the string words sentence
+       //check for character after .sorted
+    //
+    
+    return order
+}
+
+sortByLast("truck please")

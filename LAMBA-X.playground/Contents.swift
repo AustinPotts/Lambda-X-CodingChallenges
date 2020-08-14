@@ -663,26 +663,26 @@
 //MARK: - (EASY) Create a function that takes a number as an argument and returns true or false depending on whether the number is symmetrical or not. A number is symmetrical when it is the same as its reverse.
 //ex: isSymmetrical(7227) ➞ true
 //ex: isSymmetrical(9939) ➞ false
-
-func isSym(_ number: Int) -> Bool {
-    
-    let string = String(number)
-    var rev: String = ""
-    
-    for char in string.reversed() {
-        rev.append(char)
-    }
-    
-    if string == rev {
-        return true
-    } else {
-        return false
-    }
-    
-}
-
-isSym(7227)
-isSym(9939)
+//
+//func isSym(_ number: Int) -> Bool {
+//
+//    let string = String(number)
+//    var rev: String = ""
+//
+//    for char in string.reversed() {
+//        rev.append(char)
+//    }
+//
+//    if string == rev {
+//        return true
+//    } else {
+//        return false
+//    }
+//
+//}
+//
+//isSym(7227)
+//isSym(9939)
 
 
 //MARK: - (MEDIUM) Create a function that takes a string as an argument and converts the first character of each word to uppercase. Return the newly formatted string.
@@ -709,28 +709,142 @@ isSym(9939)
 //
 //uppercase("This is a title")
 
-//MARK: (HARD) Create a function that takes a string of words and return a string sorted alphabetically by the last character of each word.
+//MARK: (HARD) Create a function that takes a string of words and return a string sorted alphabetically by the last character of each word. (DOES NOT WORK!)
 //ex: sortByLast("herb camera dynamic") ➞ "camera herb dynamic"
 //ex: sortByLast("stab traction artist approach") ➞ "stab approach traction artist"
+//
+//func sortByLast(_ string: String) -> String {
+//
+//    var order: String = ""
+//
+//    let split = string.split(separator: " ")
+//    for word in split {
+//        if word.last == "k" {
+//            order.append(contentsOf: word)
+//        }
+//    }
+//
+//    //split.sorted(by: sortByLast(<#T##string: String##String#>))
+//
+//    // iterate through the string words sentence
+//       //check for character after .sorted
+//    //
+//
+//    return order
+//}
+//
+//sortByLast("truck please")
 
-func sortByLast(_ string: String) -> String {
+
+//MARK: - Day 8 of LAMBDAX
+
+//MARK: - (EASY) Create a function to calculate the determinant of a 2 * 2 matrix. The determinant of the following matrix is: ad - bc:
+//ex: calcDeterminant([
+//  [1, 2],
+//  [3, 4]
+//]) -2
+
+//func calcDeterminant(_ input:[Int], _ input2: [Int]) -> Int {
+//
+//    // Go through each value & store in letter variable
+//
+//    //create total value
+//    var totalValue = 0
+//
+//    // for i in input[0]
+//    var a = 0
+//    var b = 0
+//    var c = 0
+//    var d = 0
+//
+//    for i in input {
+//        for j in input where j != i {
+//            b = i
+//            a = j
+//        }
+//    }
+//
+//    for i in input2 {
+//        for j in input2 where j != i {
+//            d = i
+//            c = j
+//        }
+//    }
+//
+//    let aD = a * d
+//    let bC = b * c
+//    totalValue = aD - bC
+//
+//    print("Total: \(totalValue)")
+//
+//
+//
+//    return totalValue
+//
+//}
+
+
+//calcDeterminant([1,2], [3,4])
+//calcDeterminant([5,3], [3,1])
+
+
+//MARK: - (MEDIUM) Create a function that returns the number of hashes and pluses in a string.
+// ex: hashPlusCount("###+") ➞ [3, 1]
+// ex: hashPlusCount("##+++#") ➞ [3, 3]
+
+//func hashPlusCounter(_ string: String) -> [Int]{
+//
+//    var storage: [Int] = []
+//    var hashCounter = 0
+//    var plusCounter = 0
+//
+//    for char in string {
+//        if char == "#" {
+//            hashCounter += 1
+//        } else if char == "+" {
+//            plusCounter += 1
+//        }
+//    }
+//
+//    storage.append(hashCounter)
+//    storage.append(plusCounter)
+//
+//    print(storage)
+//    return storage
+//
+//}
+//
+//hashPlusCounter("###+")
+//hashPlusCounter("##+++#")
+
+
+//MARK: - (HARD) The digit distance between two numbers is the total value of the difference between each pair of digits.
+//ex: digitDistance(121, 599) ➞ 19
+//ex: digitDistance(10, 20) ➞ 1
+
+func digitDistance(_ digit1: Int, _ digit2: Int) -> Int {
     
-    var order: String = ""
+    var storage1: [Int] = []
+    var storage2: [Int] = []
+    storage1.append(contentsOf: digit1.digits)
+    print(storage1)
+    storage2.append(contentsOf: digit2.digits)
+    print(storage2)
+ 
     
-    let split = string.split(separator: " ")
-    for word in split {
-        if word.last == "k" {
-            order.append(contentsOf: word)
-        }
+    let map = zip(storage2, storage1).map({ $0 - $1 })
+    print("MAP: \(map)")
+    
+    let total = map.reduce(0, +)
+    print("Total: \(total)")
+    
+    return total
+}
+extension BinaryInteger {
+    var digits: [Int] {
+        return String(describing: self).compactMap { Int(String($0)) }
     }
-    
-    //split.sorted(by: sortByLast(<#T##string: String##String#>))
-    
-    // iterate through the string words sentence
-       //check for character after .sorted
-    //
-    
-    return order
 }
 
-sortByLast("truck please")
+digitDistance(121, 599)
+digitDistance(10, 20)

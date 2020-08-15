@@ -822,29 +822,105 @@
 //ex: digitDistance(121, 599) ➞ 19
 //ex: digitDistance(10, 20) ➞ 1
 
-func digitDistance(_ digit1: Int, _ digit2: Int) -> Int {
+//func digitDistance(_ digit1: Int, _ digit2: Int) -> Int {
+//
+//    var storage1: [Int] = []
+//    var storage2: [Int] = []
+//    storage1.append(contentsOf: digit1.digits)
+//    print(storage1)
+//    storage2.append(contentsOf: digit2.digits)
+//    print(storage2)
+//
+//
+//    let map = zip(storage2, storage1).map({ $0 - $1 })
+//    print("MAP: \(map)")
+//
+//    let total = map.reduce(0, +)
+//    print("Total: \(total)")
+//
+//    return total
+//}
+//extension BinaryInteger {
+//    var digits: [Int] {
+//        return String(describing: self).compactMap { Int(String($0)) }
+//    }
+//}
+//
+//digitDistance(121, 599)
+//digitDistance(10, 20)
+
+
+//MARK: - Day 9 of LAMBDAX
+
+//MARK: - (EASY) Create a function that takes two strings as arguments and returns the number of times the first string (the single character) is found in the second string.
+//ex: charCount("a", "edabit") ➞ 1
+//ex: charCount("c", "Chamber of secrets") ➞ 1
+
+//func charCount(_ stringLetter: String, _ stringSentence: String) -> Int {
+//
+//    var total = 0
+//
+//    // Get the value of stringLetter
+//
+//    // for char in sentence { if char == stringLetter { total+1 } }
+//    for char in stringSentence {
+//        if char == Character(stringLetter) {
+//            total += 1
+//        }
+//    }
+//
+//    return total
+//}
+//
+//charCount("a", "edabit")
+//charCount("c", "Cchacmber of secrets")
+
+
+//MARK: - (MEDIUM) Create a function that takes two arrays and combines them by alternatingly taking elements from each array in turn. ( NOT WORKING!! )
+
+//func mergeArrays(_ arrayString: [String], _ arrayNumber: [Int]) -> [AnyObject] {
+//
+//
+//    print(arrayString.sorted())
+//
+//    var combined: [AnyObject] = []
+//    combined.append(contentsOf: arrayNumber.sorted())
+//    combined.append(arrayString)
+//
+//    print(combined)
+//
+//    return []
+//}
+//
+//mergeArrays(["b,c,a"], [2,3,1])
+
+
+//MARK: - (HARD) Write a function that returns the closest palindrome number to an integer. If two palindrome numbers tie in absolute distance, return the smaller number (BASIC SOLUTION, EDIT FOR EDGE CASES)
+//ex: closestPalindrome(887) ➞ 888
+//ex: closestPalindrome(100) ➞ 99
+// 99 and 101 are equally distant, so we return the smaller palindrome.
+
+func closestPalindrome(_ int: Int) -> Int {
     
-    var storage1: [Int] = []
-    var storage2: [Int] = []
-    storage1.append(contentsOf: digit1.digits)
-    print(storage1)
-    storage2.append(contentsOf: digit2.digits)
-    print(storage2)
- 
+    // number reversed must equal number
     
-    let map = zip(storage2, storage1).map({ $0 - $1 })
-    print("MAP: \(map)")
+    var reverse = ""
+    reverse.append(contentsOf: String(int))
     
-    let total = map.reduce(0, +)
-    print("Total: \(total)")
+    var rev = String(reverse.reversed())
+    
+    var total = int
+    
+    
+    
+    if rev != String(int){
+        total += 1
+        
+    } else if rev == String(int){
+        return int
+    }
     
     return total
 }
-extension BinaryInteger {
-    var digits: [Int] {
-        return String(describing: self).compactMap { Int(String($0)) }
-    }
-}
 
-digitDistance(121, 599)
-digitDistance(10, 20)
+closestPalindrome(100)

@@ -899,28 +899,134 @@
 //ex: closestPalindrome(887) ➞ 888
 //ex: closestPalindrome(100) ➞ 99
 // 99 and 101 are equally distant, so we return the smaller palindrome.
+//
+//func closestPalindrome(_ int: Int) -> Int {
+//
+//    // number reversed must equal number
+//
+//    var reverse = ""
+//    reverse.append(contentsOf: String(int))
+//
+//    var rev = String(reverse.reversed())
+//
+//    var total = int
+//
+//
+//
+//    if rev != String(int){
+//        total += 1
+//
+//    } else if rev == String(int){
+//        return int
+//    }
+//
+//    return total
+//}
+//
+//closestPalindrome(100)
 
-func closestPalindrome(_ int: Int) -> Int {
+
+//MARK: - Day 10 of LAMBDA X
+
+//MARK: - (Easy) Create a function that checks if the box is completely filled with the asterisk symbol *
+//completelyFilled([
+//  "#####",
+//  "#***#",
+//  "#***#",
+//  "#***#",
+//  "#####"
+//]) ➞ true
+//
+//completelyFilled([
+//  "#####",
+//  "#* *#",
+//  "#***#",
+//  "#***#",
+//  "#####"
+//]) ➞ false
+
+//func isTheBoxFilled(_ arrayString: [String]) -> Bool {
+//
+//    //Need a variable to hold my final bool value
+//    var bool: Bool = true
+//
+//    for word in arrayString {
+//        for char in word {
+//        if char == " " {
+//            bool = false
+//        }
+//      }
+//   }
+//
+//
+//    return bool
+//}
+//MARK: Better way to do this
+//func completelyFilled(_ arr: [String]) -> Bool {
+//    return arr.map{ !$0.contains(" ") }.contains(false) ? false : true
+//}
+
+////isTheBoxFilled(["#####",
+////                "##+##",
+////                "#####"])
+//isTheBoxFilled(["#####",
+//                "## ##",
+//                "#####"])
+
+
+
+//MARK: - (MEDIUM) Create a function that takes an array of numbers and returns the mean value.
+//Ex: mean([1, 0, 4, 5, 2, 4, 1, 2, 3, 3, 3]) ➞ 2.55
+
+//func mean(_ intArray: [Int]) -> Double {
+//
+//    var total: Int = 0
+//
+//    for i in intArray {
+//        total += i
+//    }
+//    print(total)
+//    let count = intArray.count
+//    let sum = Double(total) / Double(count)
+//
+//    return sum
+//}
+//
+//mean([1, 0, 4, 5, 2, 4, 1, 2, 3, 3, 3])
+
+//func mean(_ intArray: [Int]) -> Double {
+//    let m = intArray.reduce(0, +)
+//
+//    return Double(m) / Double(intArray.count)
+//}
+//mean([1, 0, 4, 5, 2, 4, 1, 2, 3, 3, 3])
+
+//MARK: - (HARD) Write a function that transforms an array into an array of its differences repeatedly until there exists only one element left. A difference is A[n+1] - A[n].
+//ex: nDifferences([5, 1, 9, 3, 4, 0]) ➞ -80
+//ex: nDifferences([1, 1, 1, 1]) ➞ 0
+
+func nDifferences(_ arr: [Int]) -> Int {
     
-    // number reversed must equal number
+    //I need to iterate over the initial array
+    // In iteration I need to subtract the current index value from the next index value
     
-    var reverse = ""
-    reverse.append(contentsOf: String(int))
+    //Create variable to hold input
+    var arr1 = arr
+      
+      // While the count of the input is greater than one
+      while arr1.count > 1 {
+          //Create variable to store Ints
+          var arr2 = [Int]()
+          //Iterate throught the input value.count, subract each after iteration
+          for i in 0..<(arr1.count - 1) {
+              //append values of [i+1] subtracted from current [i] to array storage
+              arr2.append(arr1[i+1] - arr1[i])
+          }
+          
+          arr1 = arr2
+      }
+      
+      return arr1[0]
     
-    var rev = String(reverse.reversed())
-    
-    var total = int
-    
-    
-    
-    if rev != String(int){
-        total += 1
-        
-    } else if rev == String(int){
-        return int
-    }
-    
-    return total
 }
-
-closestPalindrome(100)
+nDifferences([5, 1, 9, 3, 4, 0])

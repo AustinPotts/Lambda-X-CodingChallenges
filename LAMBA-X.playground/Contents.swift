@@ -1005,28 +1005,165 @@
 //ex: nDifferences([5, 1, 9, 3, 4, 0]) ➞ -80
 //ex: nDifferences([1, 1, 1, 1]) ➞ 0
 
-func nDifferences(_ arr: [Int]) -> Int {
+//func nDifferences(_ arr: [Int]) -> Int {
+//
+//    //I need to iterate over the initial array
+//    // In iteration I need to subtract the current index value from the next index value
+//
+//    //Create variable to hold input
+//    var arr1 = arr
+//
+//      // While the count of the input is greater than one
+//      while arr1.count > 1 {
+//          //Create variable to store Ints
+//          var arr2 = [Int]()
+//          //Iterate throught the input value.count, subract each after iteration
+//          for i in 0..<(arr1.count - 1) {
+//              //append values of [i+1] subtracted from current [i] to array storage
+//              arr2.append(arr1[i+1] - arr1[i])
+//          }
+//
+//          arr1 = arr2
+//      }
+//
+//      return arr1[0]
+//
+//}
+//nDifferences([5, 1, 9, 3, 4, 0])
+//
+////MARK: - While Loop Practice
+////Print Index[0] & Index[1] in while loop until no more values
+//func tester(_ intArray: [Int]) -> Int {
+//
+//    var arr = intArray
+//    //Establish baseline
+//    while arr.count > 1 {
+//        print(arr.count)
+//        var arr2 = [Int]()
+//        // In the While Loop, perform For Loop, which will subract one from the index count
+//        // I.E Array.count = 5 -> Array.count = 4 -> Array.count = 3 etc.
+//        for i in 0..<(arr.count - 1){
+//           print("Arguement One:\(arr[i])")
+//           print("Arguement Two:\(arr[i+1])")
+//           arr2.append(arr[i] - arr[i+1])
+//        }
+//        //If you dont set the current arguement to the next argument, it will loop forever
+//        arr = arr2
+//    }
+//
+//    return 0
+//}
+//
+//tester([1,2,3,4,5])
+
+
+//MARK: Day 11 of LAMBDAX
+
+//MARK: - (EASY) Write a function that returns true if all characters in a string are identical and false otherwise.
+//ex: isIdentical("aaaaaa") ➞ true
+
+//func isIdentical(_ string: String) -> Bool {
+//
+//    var holderLetter: Character
+//    var bool: Bool = true
+//
+//    for char in string {
+//        holderLetter = char
+//        for char2 in string {
+//            if char2 != holderLetter {
+//                bool = false
+//            }
+//        }
+//    }
+//
+//    return bool
+//
+//}
+//
+//isIdentical("aaxaa")
+//MARK: - IMPROVED VERISON
+//func isIdenticalImprove(_ string: String) -> Bool {
     
-    //I need to iterate over the initial array
-    // In iteration I need to subtract the current index value from the next index value
+    // create a set, which creates new value of only one membership so if aa appears twice it will count 1. That means if all A's then the set equals 1 but if one letter is different, the set will increment
+//    let set = Set(Array(string)).count == 1
+//    print(set)
+//
+//    return set
+//
+//}
+//isIdenticalImprove("aaaaa")
+
+
+//MARK: - (MEDIUM) Create a function that takes a string and returns a new string with each new character accumulating by +1. Separate each set with a dash.
+
+//ex: accum("abcd") ➞ "A-Bb-Ccc-Dddd"
+
+//func accum(_ string: String) -> String {
+//
+//    // ill need to create a variable to hold the final result
+//    var holder: [String] = []
+//    // split the charachters of the string by -
+//
+//    //create a counter for adding extra letters
+//    //i.e first loop around, counter = 0 then 1 then 2 etc
+//    var counter = 0
+//
+//    for char in string {
+//        counter += 1
+//        let s = String(repeating: char, count: counter)
+//        if counter == 1 {
+//            holder.append(s)
+//        } else if counter != 0 {
+//            holder.append("-\(s)")
+//
+//        }
+//    }
+//
+//    let joined = holder.joined()
+//    print(joined)
+//
+//    return joined
+//
+//}
+//
+//accum("abcd")
+
+
+//MARK: (HARD) - Write a function that returns the number of ways a person can climb n stairs, where the person may only climb 1 or 2 steps at a time.
+//ex: To illustrate, if n = 4 there are 5 ways to climb:
+//[1, 1, 1, 1]
+//[2, 1, 1]
+//[1, 2, 1]
+//[1, 1, 2]
+//[2, 2]
+
+func waysToClimb(_ n: Int) -> Int {
     
-    //Create variable to hold input
-    var arr1 = arr
-      
-      // While the count of the input is greater than one
-      while arr1.count > 1 {
-          //Create variable to store Ints
-          var arr2 = [Int]()
-          //Iterate throught the input value.count, subract each after iteration
-          for i in 0..<(arr1.count - 1) {
-              //append values of [i+1] subtracted from current [i] to array storage
-              arr2.append(arr1[i+1] - arr1[i])
-          }
-          
-          arr1 = arr2
-      }
-      
-      return arr1[0]
+//    var waysToClimb = Int()
+//
+//    // Add each combo here
+//    var intArray: [Int] = []
+//
+//
+//    let oneStep = 1
+//    let twoStep = 2
+//
+//    //base case is needed - what is the base case
+//    //when theres no more ways to climb
+//    if n == 0 {
+//        return waysToClimb
+    
+    //function must call itself - where will we call
+    
+    //algorithm must change its state and move toward the base case.
+    
+    //need a counter to increment on ways to climb
+    if n <= 1 {
+        return 1
+    }
+
+    return waysToClimb(n - 1) + waysToClimb(n - 2)
+    
     
 }
-nDifferences([5, 1, 9, 3, 4, 0])
+waysToClimb(4)

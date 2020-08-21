@@ -1057,7 +1057,7 @@
 //tester([1,2,3,4,5])
 
 
-//MARK: Day 11 of LAMBDAX
+//MARK: Day 11 of LAMBDA X
 
 //MARK: - (EASY) Write a function that returns true if all characters in a string are identical and false otherwise.
 //ex: isIdentical("aaaaaa") ➞ true
@@ -1137,7 +1137,7 @@
 //[1, 1, 2]
 //[2, 2]
 
-func waysToClimb(_ n: Int) -> Int {
+//func waysToClimb(_ n: Int) -> Int {
     
 //    var waysToClimb = Int()
 //
@@ -1158,12 +1158,94 @@ func waysToClimb(_ n: Int) -> Int {
     //algorithm must change its state and move toward the base case.
     
     //need a counter to increment on ways to climb
-    if n <= 1 {
-        return 1
-    }
+//    if n <= 1 {
+//        return 1
+//    }
+//
+//    return waysToClimb(n - 1) + waysToClimb(n - 2)
+//
+//
+//}
+//waysToClimb(4)
 
-    return waysToClimb(n - 1) + waysToClimb(n - 2)
-    
-    
-}
-waysToClimb(4)
+//MARK: - Day 12 of LAMBDA X
+
+//MARK: - (Linked List In Swift)
+
+//create a basic node class
+//
+//public class Node {
+//
+//   // A node needs a value associated with it.
+//    var value: String
+//    init(value:String){
+//        self.value = value
+//    }
+//    //I declared a property named value of type String. In your own apps, this could be any datatype you want to store.
+//
+//    //In addition to a value, each node needs a pointer to the next node in the list.
+//    var next: Node?
+//    //You have declared a property named next of type Node. Note that you’ve made next an optional. This is because the last node in the linked list does not point to another node.
+//
+//    weak var previous: Node?
+//    //To avoid ownership cycles, we declare the previous pointer to be weak. If you have a node A that is followed by node B in the list, then A points to B but also B points to A. In certain circumstances, this ownership cycle can cause nodes to be kept alive even after you deleted them.
+//
+//}
+//
+////This class will keep track of where the list begins and ends. It will also provide a number of other helper functions.
+//public class LinkedList {
+//    //Linked list has a head value & tail value (head node, tail node)
+//  fileprivate var head: Node?
+//  private var tail: Node?
+//
+//
+//  public var isEmpty: Bool {
+//    return head == nil
+//  }
+//  //First node is head
+//  public var first: Node? {
+//    return head
+//  }
+//  //Last node is tail
+//  public var last: Node? {
+//    return tail
+//  }
+//
+//    //To handle appending a new node on your list, you’ll declare a append(value:) method in your LinkedList class
+//    public func append(value: String) {
+//      // 1
+//      //Create a new Node to contain the value. Remember, the purpose of the Node class is so that each item in the linked list can point to the previous and next node.
+//      let newNode = Node(value: value)
+//      // 2
+//      //If tailNode is not nil, that means there is something in the linked list already. If that’s the case, configure the new item to point to the tail of the list as it’s previous item.
+//      if let tailNode = tail {
+//        newNode.previous = tailNode
+//        tailNode.next = newNode
+//      }
+//      // 3
+//      else {
+//        head = newNode
+//      }
+//      // 4
+//      tail = newNode
+//    }
+//
+//}
+
+//MARK: - (EASY) The recursive function for this challenge should return the factorial of an inputted integer. If anyone needs a refresher, factorials in mathematics are represented by an exclamation point placed to the right of a number:
+//ex: factorial(5) ➞ 120
+
+//
+//func factorial(_ int: Int) -> Int {
+//
+//  if int == 1 {
+//        return 1
+//    }
+//    return int * factorial(int - 1)
+//
+//}
+//
+//factorial(5)
+
+
+//MARK: - (MEDIUM) 

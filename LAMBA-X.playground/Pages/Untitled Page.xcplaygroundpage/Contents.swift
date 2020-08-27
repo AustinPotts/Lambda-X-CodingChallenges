@@ -1248,4 +1248,138 @@
 //factorial(5)
 
 
-//MARK: - (MEDIUM) 
+//MARK: - (MEDIUM) Create a function that transforms sentences ending with multiple question marks ? or exclamation marks ! into a sentence only ending with one without changing punctuation in the middle of the sentences.
+//ex: noYelling("What went wrong?????????") ➞ "What went wrong?"
+//ex: noYelling("Oh my goodness!!!") ➞ "Oh my goodness!"
+
+//func noYelling(_ string: String) -> String {
+//
+//    //I need a string property to hold my final result based upon the conditions
+//    var stringResult = ""
+//    // iterate through the characters
+//        // append char to holder
+//        //if char == "!" || "?" then return the string sentence
+//    for char in string {
+//        stringResult.append(char)
+//        if char == "!" {
+//            return stringResult
+//        } else if char == "?" {
+//            return stringResult
+//        }
+//    }
+//
+//    return stringResult
+//}
+//
+//noYelling("Hello!!!!!!")
+
+
+
+//MARK: - (HARD) Write a function that returns a closure, which transforms its input by adding a particular suffix at the end.
+//let add_ly = add_suffix("ly")
+//
+//add_ly("hopeless") ➞ "hopelessly"
+//add_ly("total") ➞"totally"
+         // Function input value  //Returned closure value that returns a value
+//func add_suffix(_ suffix: String) -> (String) -> String {
+//    return { $0 + suffix }
+//}
+//
+//let add_ly = add_suffix("ly")
+//
+//add_ly("total")
+
+//Write a function that returns a closure, which transforms its input by adding a particular number at the end.
+
+
+
+//MARK: - Day 13 of LAMBDA X
+
+//MARK: - (EASY) Write a function that transforms all letters from [a, m] to 0 and letters from [n, z] to 1 in a string.
+//ex: convertBinary("house") ➞ "01110"
+//ex: convertBinary("excLAIM") ➞ "0100000"
+
+//func convertBinary(_ string: String) -> String {
+//
+//    //I need to store the values for 0 (a-m) & 1 (n-z)
+//    let zeroArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m"]
+//    let oneArray = ["n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+//    var holder = ""
+//
+//    for char in string {
+//        print("Char: \(char)")
+//        for letter in zeroArray {
+//            print("Letter: \(letter)")
+//            if char == Character(letter) {
+//                holder.append("0")
+//            }
+//        }
+//        for letr in oneArray {
+//            if char == Character(letr) {
+//                holder.append("1")
+//            }
+//        }
+//    }
+//
+//
+//    return holder
+//
+//}
+//
+//convertBinary("house")
+//convertBinary("moon")
+
+//MARK: (MEDIUM) Create a function that takes an array consisting of dice rolls from 1-6. Return the sum of your rolls with the following conditions:
+//If a 1 is rolled, that is bad luck. The next roll counts as 0.
+//If a 6 is rolled, that is good luck. The next roll is multiplied by 2.
+//The array length will always be 3 or higher.
+
+//func roll(_ arrayInt:[Int]) -> Int {
+//
+//    var total = 0
+//    var arrayIntStorage: [Int] = []
+//    arrayIntStorage.append(contentsOf: arrayInt)
+//
+//    for n in arrayIntStorage {
+//        if n == 1 {
+//            arrayIntStorage.remove(at: 1)
+//            print(arrayIntStorage)
+//        }
+//    }
+//
+//
+//    for i in arrayIntStorage {
+//           total += i
+//       }
+//
+//
+//
+//    return total
+//
+//}
+//
+//roll([1,2,3])
+
+
+//MARK: - (HARD) Create a function that subtracts one positive integer from another, without using any arithmetic operators such as -, %, /, +, etc.
+
+//func mySub(_ int1: Int, _ int2: Int) -> Int {
+//
+//    // Iterate till there is no carry
+//    while (int2 != 0) {
+//
+//           // carry now contains common
+//           // set bits of x and y
+//           var carry = int1 & int2
+//
+//           // Sum of bits of x and y where at
+//           // least one of the bits is not set
+//           int1 = int1 ^ int2
+//
+//           // Carry is shifted by one so that
+//           // adding it to x gives the required sum
+//           int2 = carry << 1
+//    }
+//
+//    return int1
+//}

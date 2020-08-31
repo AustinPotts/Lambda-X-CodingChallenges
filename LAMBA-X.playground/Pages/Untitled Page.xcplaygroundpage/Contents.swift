@@ -1383,3 +1383,53 @@
 //
 //    return int1
 //}
+
+
+//MARK: - Day 14 of LAMBDA X
+//MARK: - (Code Signal) Given a year, return the century it is in. The first century spans from the year 1 up to and including the year 100, the second - from the year 101 up to and including the year 200, etc.
+
+//func centuryFromYear(year: Int) -> Int {
+//
+////The first century spans from the year 1 up to and including the year 100, the second - from the year 101 up to and including the year 200,
+//
+//// I'll need something to hold my century values, as I dont want to write out 20
+////var century = 0
+////
+////// What do I need to do with the input Int value 'year'?
+////// each century = 100
+////
+////
+////if year > 0 {
+////    century += 1
+////    print(century)
+////    centuryFromYear(year: year - 100)
+////}
+//
+////MARK: - Reflection: My initial thought to use math divide by 100 was correct, however I didn't think of the most solution answer first. I jumped to something more difficult not realizing I could do the entirety in one line
+//
+//return (year - 1) / 100 + 1
+//
+//}
+//
+////centuryFromYear(year: 1700)
+//centuryFromYear(year: 1905)
+
+
+//MARK: - (Code Signal) Given the string, check if it is a palindrome.
+
+//func checkPalindrome(inputString: String) -> Bool {
+//
+//    var bool: Bool = true
+//    
+//    let rev = String(inputString.reversed())
+//    print(rev)
+//
+//    if rev != inputString {
+//        bool = false
+//    }
+//
+//    return bool
+//
+//}
+//
+//checkPalindrome(inputString: "abba")

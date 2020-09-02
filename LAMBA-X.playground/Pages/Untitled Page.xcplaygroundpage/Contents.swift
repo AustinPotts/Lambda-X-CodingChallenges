@@ -1420,7 +1420,7 @@
 //func checkPalindrome(inputString: String) -> Bool {
 //
 //    var bool: Bool = true
-//    
+//
 //    let rev = String(inputString.reversed())
 //    print(rev)
 //
@@ -1433,3 +1433,110 @@
 //}
 //
 //checkPalindrome(inputString: "abba")
+
+
+//MARK: - Day 15 of LAMBDA X
+//MARK: - (Code Signal) Given an array of integers, find the pair of adjacent elements that has the largest product and return that product.
+
+//func adjacentElementsProduct(inputArray: [Int]) -> Int {
+//
+//    // I need to find 2 values, which when multiplied produce the largest sum
+//    //ex: [5, 1, 2, 3, 1, 4]
+////    for i in inputArray {
+////        if i > holder {
+////            holder = i
+////        }
+////    }
+//
+////    for i in inputArray {
+////        for o in inputArray where o != i {
+////            print(i * o)
+////
+////            if i * o > holder {
+////                holder = i * o
+////            }
+////        }
+////    }
+//
+//    var i = 0;
+//    var holder = 0
+//
+//
+////    while i < inputArray.count {
+////        var a = inputArray[i]
+////        var b : Int = 0
+////        if i + 1 < inputArray.count {
+////            b = inputArray[i+1]
+////        }
+////        if a * b > holder {
+////            holder = a * b
+////        }
+////
+////        i += 2
+////    }
+//
+//    while i < inputArray.count - 1 {
+//        if inputArray[i] >= 0 {
+//        if inputArray[i] * inputArray[i+1] > holder {
+//            holder = inputArray[i] * inputArray[i+1]
+//         }
+//        } else {
+//            if inputArray[i] * inputArray[i+1] < holder {
+//               holder = inputArray[i] * inputArray[i+1]
+//            }
+//        }
+//        i += 1
+//    }
+//
+//
+//
+//    return holder
+//
+//}
+//
+//adjacentElementsProduct(inputArray: [5, 1, 2, 3, 1, 4])
+
+
+//MARK: (EASY) Write a function that takes an integer minutes and converts it to seconds.
+//convert(5) ➞ 300
+//
+//func convert(_ minutes: Int) -> Int {
+//
+//    return minutes * 60
+//
+//}
+//convert(5)
+
+
+//MARK: (MEDIUM) Create a function that takes an integer and outputs an n x n square solely consisting of the integer n.
+//squarePatch(3) ➞ [
+//  [3, 3, 3],
+//  [3, 3, 3],
+//  [3, 3, 3]
+//]
+
+// I want to take in a number, then creat number amount of arrays with number amount of number inside the array
+//func squarePathc(_ number: Int) -> [[Int]] {
+//
+//    var finalArray: [[Int]] = []
+//
+//    // you need to create the number amount of arrays (ex: 3) then append those to the final array
+//    var holderArray: [Int] = []
+//
+//    for _ in 1...number {
+//        holderArray.append(number)
+//    }
+//
+//    for _ in 1...number {
+//        finalArray.append(holderArray)
+//    }
+//
+//    print(finalArray)
+//
+//
+//    return finalArray
+//}
+//
+//squarePathc(3)
+
+

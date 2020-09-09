@@ -1540,3 +1540,114 @@
 //squarePathc(3)
 
 
+//MARK: - Day 16 of LAMBDA X
+
+//MARK: - (EASY) Create a function that takes length and width and finds the perimeter of a rectangle.
+
+//The perimeter of a rectangle is found by adding up the length of all four sides. or (length + width) * 2.
+//ex: findPerimeter(6, 7) ➞ 26
+
+//func findPerimeter(_ length: Int, _ width: Int) -> Int {
+//
+//    return (length + width) * 2
+//
+//}
+//findPerimeter(6, 7)
+
+
+
+//MARK: - (Code Signal) Below we will define an n-interesting polygon. Your task is to find the area of a polygon for a given n.
+//func shapeArea(n: Int) -> Int {
+//
+//
+// return (n*n)+((n-1)*(n-1))
+//}
+
+
+//MARK: - (Code Signal) Ratiorg got statues of different sizes as a present from CodeMaster for his birthday, each statue having an non-negative integer size. Since he likes to make things perfect, he wants to arrange them from smallest to largest so that each statue will be bigger than the previous one exactly by 1. He may need some additional statues to be able to accomplish that. Help him figure out the minimum number of additional statues needed.
+
+
+//func makeArrayConsecutive2(statues: [Int]) -> Int {
+//
+//// Sort the array first
+//
+//
+//// ex: [6, 2, 3 ,8] -> [2,3,6,8]
+////Need a counter for the final output
+//var counter = 0
+//
+//var i = 0
+//// for num in array
+//var statueHolder: [Int] = []
+//
+//
+//for n in statues {
+//    statueHolder.append(n)
+//}
+//
+//var sortedStatues = statueHolder.sorted(by: <)
+//
+//    outside: while i < sortedStatues.count - 1 {
+//    for num in sortedStatues {
+//        if num + 1 == sortedStatues[i+1] {
+//            i += 2
+//            continue outside
+//        } else if num + 1 != sortedStatues[i+1] {
+//            sortedStatues.insert(num + 1, at: sortedStatues[i+1])
+//            print(num + 1)
+//            counter += 1
+//        }
+//    }
+//    i += 1
+//}
+//    // if num (2) + 1 = array[num+1]
+//        // do nothing
+//    //else if num + 1 != array[num+1]
+//        // add 4 to the array
+//        // counter += 1
+//
+//        return counter
+//
+//
+//}
+
+//MARK: - This is the best Solution
+func makeArrayConsecutive2(statues: [Int]) -> Int {
+
+// Sort the array first
+
+
+// ex: [6, 2, 3 ,8] -> [2,3,6,8]
+//Need a counter for the final output
+var counter = 0
+
+
+// for num in array
+var statueHolder: [Int] = []
+
+
+for n in statues {
+    statueHolder.append(n)
+}
+
+    var sortedStatues = statueHolder.sorted(by: <)
+
+    var set = Set<Int>(sortedStatues.first!...sortedStatues.last!)
+    
+    for num in sortedStatues {
+        if set.contains(num) {
+            set.remove(num)
+        }
+        
+    }
+    
+    for _ in set {
+        counter += 1
+    }
+    
+        return counter
+        
+
+}
+
+makeArrayConsecutive2(statues: [6,2,3,8])
